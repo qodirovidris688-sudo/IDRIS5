@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="tg">
+  <link rel="stylesheet" href="./idris.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#061a3b">
+  <meta name="description" content="USTOYOB — устои лозиматро зуд пайдо кун!">
+  <title>USTOYOB — Устои лозиматро пайдо кун</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="brand" id="homeLink" aria-label="USTOYOB">
+      <span class="brand-icon">U</span>
+      <span>USTOYOB<small>Платформаи устоҳои Тоҷикистон</small></span>
+    </a>
+    <button class="menu-button" id="menuButton" aria-label="Кушодани меню">☰</button>
+    <nav class="nav" id="mainNav">
+      <button class="nav-link" data-page="home">Асосӣ</button>
+      <button class="nav-link" data-page="workers">Дидани устоҳо</button>
+      <button class="nav-link" data-page="register">Ман усто ҳастам</button>
+      <button class="nav-link" data-page="favorites">★ Дӯстдоштаҳо</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Саҳифаи асосӣ -->
+    <section id="homePage" class="page active">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">ПЛАТФОРМАИ УСТОҲОИ ТОҶИКИСТОН</span>
+          <h1>USTOYOB</h1>
+          <h2>Устои лозиматро зуд пайдо кун!</h2>
+          <p>Касби лозимаро интихоб кун, профили устоҳоро бин ва мустақиман тамос гир.</p>
+
+          <form id="heroSearchForm" class="search-box">
+            <input id="heroSearch" type="search"
+              placeholder="Касб, ном, шаҳр ё ноҳия..."
+              aria-label="Ҷустуҷӯи усто">
+            <button type="submit" class="btn btn-primary">Ҷустуҷӯ</button>
+          </form>
+
+          <div class="hero-actions">
+            <button class="main-action action-blue" data-page="workers">
+              <span class="action-icon">⌕</span>
+              <span><strong>Дидани устоҳо</strong><small>Ҳамаи профилҳои устоҳо</small></span>
+            </button>
+            <button class="main-action action-dark" data-page="register">
+              <span class="action-icon">♟</span>
+              <span><strong>Ман усто ҳастам</strong><small>Профили худро соз</small></span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-decoration" aria-hidden="true">
+          <div class="glass-orb">
+            <span class="tool-symbol">🔧</span>
+            <span class="orb-label">USTOYOB</span>
+            <span class="orb-caption">Хизматрасонии боэътимод</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="benefit-strip">
+        <div><span class="benefit-icon">✓</span><span><b>Устои гуногун</b><small>Касби лозимаро ёб</small></span></div>
+        <div><span class="benefit-icon">⚡</span><span><b>Ҷустуҷӯи осон</b><small>Зуд ва қулай</small></span></div>
+        <div><span class="benefit-icon">⌖</span><span><b>Шаҳру ноҳияҳо</b><small>Маҳалли худро интихоб кун</small></span></div>
+        <div><span class="benefit-icon">★</span><span><b>Баҳо ва шарҳҳо</b><small>Таҷрибаи мизоҷон</small></span></div>
+      </div>
+
+      <section class="home-preview section-wrap">
+        <div class="section-heading">
+          <div><span class="eyebrow">USTOYOB</span><h2>Устои хубро ёфтан осон аст</h2></div>
+          <button class="text-button" data-page="workers">Ҳамаи устоҳо →</button>
+        </div>
+        <div id="homeWorkers" class="worker-grid"></div>
+        <div id="homeEmpty" class="empty-state hidden">
+          <span>⌕</span><h3>Ҳоло профил нест</h3>
+          <p>Ба бахши «Ман усто ҳастам» даромада, профили аввалро соз.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Рӯйхати устоҳо -->
+    <section id="workersPage" class="page section-wrap">
+      <div class="section-heading">
+        <div><span class="eyebrow">ҶУСТУҶӮИ УСТО</span><h1>Устоҳои Тоҷикистон</h1>
+          <p class="muted">Касбро интихоб кун ё номи лозимаро навис.</p>
+        </div>
+      </div>
+
+      <div class="filter-panel">
+        <label class="field">
+          <span>Ҷустуҷӯ</span>
+          <input id="workerSearch" type="search" placeholder="Ном, касб ё рамзи усто...">
+        </label>
+        <label class="field">
+          <span>Касб</span>
+          <select id="professionFilter">
+            <option value="">Ҳамаи касбҳо</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Шаҳр ё ноҳия</span>
+          <select id="cityFilter">
+            <option value="">Ҳамаи маҳалҳо</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Нархи то (сомонӣ)</span>
+          <input id="priceFilter" type="number" min="0" placeholder="Масалан, 300">
+        </label>
+        <button id="clearFilters" class="btn btn-outline">Тоза кардан</button>
+      </div>
+
+      <div class="results-heading">
+        <span id="resultsCount">0 усто</span>
+        <label class="sort-control">Мураттабсозӣ
+          <select id="sortWorkers">
+            <option value="newest">Навтарин</option>
+            <option value="rating">Баҳои баланд</option>
+            <option value="price">Нархи паст</option>
+            <option value="experience">Таҷрибаи зиёд</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="workerGrid" class="worker-grid"></div>
+      <div id="workersEmpty" class="empty-state hidden">
+        <span>⌕</span>
+        <h3>Усто ёфт нашуд</h3>
+        <p>Касб ё маҳалли дигарро интихоб кун.</p>
+        <button class="btn btn-primary" data-page="register">Ман усто ҳастам</button>
+      </div>
+    </section>
+
+    <!-- Сохтан ё таҳрири профили усто -->
+    <section id="registerPage" class="page section-wrap narrow-section">
+      <div class="form-heading">
+        <span class="eyebrow">БАРОИ УСТОҲО</span>
+        <h1 id="profileFormTitle">Профили усто соз</h1>
+        <p class="muted">Маълумотатро пур кун, то мизоҷон тавонанд бо ту тамос гиранд.</p>
+      </div>
+
+      <form id="workerForm" class="profile-form">
+        <input id="editWorkerId" type="hidden">
+
+        <div class="form-grid">
+          <label class="field full-width">
+            <span>Ному насаб *</span>
+            <input id="workerName" required maxlength="80" placeholder="Масалан, Алиев Фирдавс">
+          </label>
+
+          <label class="field">
+            <span>Касб *</span>
+            <select id="workerProfession" required>
+              <option value="">Касбро интихоб кун</option>
+            </select>
+          </label>
+
+          <label class="field hidden" id="customProfessionWrap">
+            <span>Номи касби худат *</span>
+            <input id="customProfession" maxlength="80" placeholder="Касбатро навис">
+          </label>
+
+          <label class="field">
+            <span>Шаҳр ё ноҳия *</span>
+            <select id="workerCity" required>
+              <option value="">Маҳалро интихоб кун</option>
+            </select>
+          </label>
+
+          <label class="field hidden" id="customCityWrap">
+            <span>Номи шаҳр ё ноҳия *</span>
+            <input id="customCity" maxlength="80" placeholder="Номи маҳалро навис">
+          </label>
+
+          <label class="field">
+            <span>Рақами телефон *</span>
+            <input id="workerPhone" type="tel" required maxlength="25" placeholder="+992 900 00 00 00">
+          </label>
+
+          <label class="field">
+            <span>Таҷрибаи корӣ (сол) *</span>
+            <input id="workerExperience" type="number" required min="0" max="70" placeholder="Масалан, 5">
+          </label>
+
+          <label class="field">
+            <span>Нархи хизматрасонӣ (сомонӣ)</span>
+            <input id="workerPrice" type="number" min="0" placeholder="Масалан, 150">
+          </label>
+
+          <label class="field">
+            <span>Воҳиди нарх</span>
+            <select id="workerPriceUnit">
+              <option value="барои кор">Барои кор</option>
+              <option value="барои як соат">Барои як соат</option>
+              <option value="барои як рӯз">Барои як рӯз</option>
+              <option value="бо маслиҳат">Бо маслиҳат</option>
+            </select>
+          </label>
+
+          <label class="field full-width">
+            <span>Сурат ё нишонии акси профил</span>
+            <input id="workerPhoto" type="url" placeholder="https://... (ихтиёрӣ)">
+            <small>Метавонӣ нишонии акси интернетиро гузорӣ. Ин версия файлро ба сервер бор намекунад.</small>
+          </label>
+
+          <label class="field full-width">
+            <span>Дар бораи худ ва кори худ</span>
+            <textarea id="workerBio" rows="4" maxlength="600" placeholder="Таҷриба, хизматрасонӣ ва корҳои анҷомдодаатро навис..."></textarea>
+          </label>
+        </div>
+
+        <div class="form-notice">
+          <span>ⓘ</span>
+          <p>Рақами телефон дар профил намоён мешавад. Танҳо маълумотеро ворид кун, ки мехоҳӣ бо мизоҷон мубодила намоӣ.</p>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="saveWorkerButton">Сохтани профил</button>
+          <button class="btn btn-outline hidden" type="button" id="cancelEditButton">Бекор кардан</button>
+        </div>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+
+      <div class="my-profiles">
+        <div class="section-heading">
+          <div><h2>Профилҳои дар ин браузер сохташуда</h2>
+            <p class="muted">Рамзи профилро нигоҳ дор, то онро баъд таҳрир карда тавонӣ.</p>
+          </div>
+        </div>
+        <div id="myProfilesList" class="my-profiles-list"></div>
+      </div>
+    </section>
+
+    <!-- Дӯстдоштаҳо -->
+    <section id="favoritesPage" class="page section-wrap">
+      <div class="section-heading">
+        <div><span class="eyebrow">ИНТИХОБҲОИ ТУ</span><h1>Устоҳои дӯстдошта</h1>
+          <p class="muted">Профилҳои интихобкардаат дар ҳамин дастгоҳ нигоҳ дошта мешаванд.</p>
+        </div>
+      </div>
+      <div id="favoritesGrid" class="worker-grid"></div>
+      <div id="favoritesEmpty" class="empty-state hidden">
+        <span>♡</span><h3>Ҳоло устои дӯстдошта надорӣ</h3>
+        <p>Дар профили усто нишонаи дилро пахш кун.</p>
+        <button class="btn btn-primary" data-page="workers">Дидани устоҳо</button>
+      </div>
+    </section>
+
+    <!-- Намоиши профили интихобшуда -->
+    <section id="detailPage" class="page section-wrap narrow-section">
+      <button id="backToWorkers" class="text-button">← Бозгашт ба устоҳо</button>
+      <div id="workerDetail"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="brand-icon">U</span>
+      <div><b>USTOYOB</b><small>Устои лозиматро зуд пайдо кун!</small></div>
+    </div>
+    <div class="footer-contact">
+      <span>Тамос бо мо</span>
+      <a href="tel:780544443">780 544 443</a>
+    </div>
+    <p>© <span id="currentYear"></span> USTOYOB. Ҳамаи ҳуқуқҳо ҳифз шудаанд.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+<script src="./idris.js"></script>
+</body>
+</html>
